@@ -1,0 +1,25 @@
+body {
+    font-family: Inter, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background: #fafafa;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 14px;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.alerta {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.score {
+    color: #d97706;
+    font-size: 14px;
+}
