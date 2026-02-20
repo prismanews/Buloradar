@@ -1,34 +1,34 @@
-# .github/workflows/deploy-production.yml
-name: Deploy to Production
+name: Deploy BuloRadar to GitHub Pages
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy-azure:
-    name: Deploy to Azure App Service
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Deploy Backend to Azure
-      uses: azure/webapps-deploy@v3
-      with:
-        app-name: 'buloradar-api'
-        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-        package: './backend'
-
-    - name: Deploy Frontend to Azure Storage
-      uses: azure/CLI@v2
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az storage blob upload-batch \
-            --account-name buloradarstatic \
-            --destination \$web \
-            --source ./frontend \
-            --overwrite
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
