@@ -240,4 +240,248 @@ function filterBulos() {
         let matchesDate = true;
         if (dateFilter) {
             const buloDate = new Date(bulo.date);
-            const now = new Date
+            const now = new Date();
+            const diffDays = Math.floor((now - buloDate) / (1000 * 60 * 60 * 24));
+            
+            if (dateFilter === '24h' && diffDays > 1) matchesDate = false;
+            else if (dateFilter === 'week' && diffDays > 7) matchesDate = false;
+            else if (dateFilter === 'month' && diffDays > 30) matchesDate = false;
+            else if (dateFilter === 'year' && diffDays > 365) matchesDate = false;
+        }
+        
+        return matchesSearch && matchesCategory && matchesDanger && matchesDate;
+    });
+    
+    loadDatabase(filtered);
+}
+
+// Modal functionality
+function initModal() {
+    const modal = document.getElementById('reportModal');
+    const reportBtn = document.querySelector('.btn-report');
+    const closeBtn = document.querySelector('.close-modal');
+    const reportForm = document.getElementById('reportForm');
+    
+    if (reportBtn) {
+        reportBtn.onclick = () => {
+            modal.style.display = 'block';
+        };
+    }
+    
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+        };
+    }
+    
+    window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+    
+    if (reportForm) {
+        reportForm.onsubmit = (e) => {
+            e.preventDefault();
+            alert('¡Gracias por tu reporte! Nuestro equipo lo revisará.');
+            modal.style.display = 'none';
+            reportForm.reset();
+        };
+    }
+}
+
+// Filter buttons functionality
+function initFilterButtons() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            // Here you would filter the feed based on category
+            const category = btn.textContent.toLowerCase();
+            if (category === 'todos') {
+                loadBulosFeed(bulosData);
+            } else {
+                const filtered = bulosData.filter(b => b.category === category);
+                loadBulosFeed(filtered);
+            }
+        });
+    });
+}
+
+// Smooth scroll for navigation
+function initSmoothScroll() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+// Active nav link on scroll
+function initActiveNav() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    animateCounter();
+    loadBulosFeed();
+    loadDatabase();
+    initModal();
+    initFilterButtons();
+    initSmoothScroll();
+    initActiveNav();
+    
+    // Add event listeners for search and filters
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const dateFilter = document.getElementById('dateFilter');
+    const dangerFilter = document.getElementById('dangerFilter');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', filterBulos);
+    }
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterBulos);
+    }
+    
+    if (dateFilter) {
+        dateFilter.addEventListener('change', filterBulos);
+    }
+    
+    if (dangerFilter) {
+        dangerFilter.addEventListener('change', filterBulos);
+    }
+    
+    // Hero CTA buttons
+    const primaryBtn = document.querySelector('.btn-primary');
+    if (primaryBtn) {
+        primaryBtn.addEventListener('click', () => {
+            document.getElementById('feed').scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+    
+    const secondaryBtn = document.querySelector('.btn-secondary');
+    if (secondaryBtn) {
+        secondaryBtn.addEventListener('click', () => {
+            alert('BuloRadar rastrea automáticamente miles de fuentes para detectar y desmentir bulos en tiempo real. ¡Tu colaboración es clave!');
+        });
+    }
+});
+
+// Add some CSS for database items (to be added to styles.css)
+const style = document.createElement('style');
+style.textContent = `
+    .database-item {
+        background: #1e1e1e;
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .database-item:hover {
+        border-color: var(--primary);
+        transform: translateY(-3px);
+    }
+    
+    .database-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    
+    .database-category {
+        background: var(--primary);
+        color: var(--dark);
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .database-danger {
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    .database-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--light);
+    }
+    
+    .database-description {
+        color: #999;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+    }
+    
+    .database-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    
+    .database-date {
+        color: #666;
+        font-size: 0.8rem;
+    }
+    
+    .btn-view {
+        background: var(--primary);
+        color: var(--dark);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-view:hover {
+        background: var(--secondary);
+        color: var(--light);
+    }
+`;
+
+document.head.appendChild(style);
