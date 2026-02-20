@@ -1,0 +1,200 @@
+{
+  "bulos": [
+    {
+      "id": 1,
+      "title": "¿Nuevo virus creado en laboratorio?",
+      "description": "Afirma que el último brote viral fue creado artificialmente en un laboratorio chino",
+      "truth": "Estudios internacionales de la OMS y centros de investigación confirman origen natural. No hay evidencia de manipulación genética.",
+      "platform": "twitter",
+      "platformIcon": "fa-brands fa-twitter",
+      "category": "salud",
+      "dangerLevel": "alto",
+      "date": "2024-01-15",
+      "source": "https://twitter.com/...",
+      "image": null,
+      "spread": 12500,
+      "tags": ["virus", "pandemia", "conspiración"],
+      "sources": [
+        {
+          "name": "Organización Mundial de la Salud",
+          "url": "https://who.int/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Manipulación de cifras de empleo",
+      "description": "Afirma que las estadísticas de paro están falseadas para maquillar la realidad económica",
+      "truth": "Los datos del INE son verificables y auditados por organismos independientes como la AIReF y Eurostat",
+      "platform": "tiktok",
+      "platformIcon": "fa-brands fa-tiktok",
+      "category": "politica",
+      "dangerLevel": "medio",
+      "date": "2024-01-14",
+      "source": "https://tiktok.com/...",
+      "image": null,
+      "spread": 8500,
+      "tags": ["economía", "empleo", "estadísticas"],
+      "sources": [
+        {
+          "name": "Instituto Nacional de Estadística",
+          "url": "https://ine.es/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Nueva moneda digital obligatoria",
+      "description": "Asegura que el gobierno implantará una moneda digital para controlar los ahorros de los ciudadanos",
+      "truth": "No hay ningún proyecto de ley en curso. El Banco Central Europeo lo desmiente categóricamente",
+      "platform": "instagram",
+      "platformIcon": "fa-brands fa-instagram",
+      "category": "economia",
+      "dangerLevel": "bajo",
+      "date": "2024-01-13",
+      "source": "https://instagram.com/...",
+      "image": null,
+      "spread": 3200,
+      "tags": ["economía", "moneda", "control"],
+      "sources": [
+        {
+          "name": "Banco Central Europeo",
+          "url": "https://ecb.europa.eu/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Vacunas contienen microchips",
+      "description": "Teoría conspirativa sobre seguimiento a través de microchips en las vacunas",
+      "truth": "Estudios científicos demuestran composición. Organismos de salud internacionales lo desmienten",
+      "platform": "facebook",
+      "platformIcon": "fa-brands fa-facebook",
+      "category": "salud",
+      "dangerLevel": "alto",
+      "date": "2024-01-12",
+      "source": "https://facebook.com/...",
+      "image": null,
+      "spread": 45200,
+      "tags": ["vacunas", "salud", "conspiración"],
+      "sources": [
+        {
+          "name": "Ministerio de Sanidad",
+          "url": "https://sanidad.gob.es/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Manipulación electoral en elecciones",
+      "description": "Afirma que hubo fraude masivo en votos por correo en las últimas elecciones",
+      "truth": "Auditoría independiente confirma transparencia del proceso electoral",
+      "platform": "twitter",
+      "platformIcon": "fa-brands fa-twitter",
+      "category": "politica",
+      "dangerLevel": "alto",
+      "date": "2024-01-11",
+      "source": "https://twitter.com/...",
+      "image": null,
+      "spread": 27800,
+      "tags": ["elecciones", "política", "fraude"],
+      "sources": [
+        {
+          "name": "Junta Electoral Central",
+          "url": "https://juntaelectoralcentral.es/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Nueva cura milagrosa para el cáncer",
+      "description": "Promueve tratamiento alternativo con bicarbonato que cura el cáncer",
+      "truth": "Asociaciones médicas advierten sobre peligros de tratamientos no probados científicamente",
+      "platform": "telegram",
+      "platformIcon": "fa-brands fa-telegram",
+      "category": "salud",
+      "dangerLevel": "alto",
+      "date": "2024-01-10",
+      "source": "https://t.me/...",
+      "image": null,
+      "spread": 18900,
+      "tags": ["salud", "cáncer", "pseudociencia"],
+      "sources": [
+        {
+          "name": "Asociación Española Contra el Cáncer",
+          "url": "https://aecc.es/...",
+          "type": "ong"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Robo de agua en Doñana",
+      "description": "Asegura que hay miles de hectáreas de regadío ilegal en Doñana",
+      "truth": "Existen inspecciones regulares y solo un pequeño porcentaje está bajo investigación",
+      "platform": "twitter",
+      "platformIcon": "fa-brands fa-twitter",
+      "category": "medioambiente",
+      "dangerLevel": "medio",
+      "date": "2024-01-09",
+      "source": "https://twitter.com/...",
+      "image": null,
+      "spread": 5600,
+      "tags": ["medioambiente", "agua", "doñana"],
+      "sources": [
+        {
+          "name": "Confederación Hidrográfica del Guadalquivir",
+          "url": "https://chguadalquivir.es/...",
+          "type": "oficial"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Inmigrantes reciben más ayudas",
+      "description": "Afirma que los inmigrantes reciben más ayudas sociales que los españoles",
+      "truth": "Los datos oficiales muestran que las ayudas son universales y basadas en necesidad",
+      "platform": "tiktok",
+      "platformIcon": "fa-brands fa-tiktok",
+      "category": "social",
+      "dangerLevel": "alto",
+      "date": "2024-01-08",
+      "source": "https://tiktok.com/...",
+      "image": null,
+      "spread": 34500,
+      "tags": ["inmigración", "ayudas", "social"],
+      "sources": [
+        {
+          "name": "Ministerio de Inclusión",
+          "url": "https://inclusion.seg-social.es/...",
+          "type": "oficial"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "totalBulos": 1247,
+    "lastUpdated": "2024-01-15",
+    "sources": [
+      "twitter.com",
+      "tiktok.com",
+      "instagram.com",
+      "facebook.com",
+      "telegram.org",
+      "whatsapp.com"
+    ],
+    "categories": [
+      "salud",
+      "politica",
+      "economia",
+      "medioambiente",
+      "social",
+      "ciencia"
+    ]
+  }
+}
